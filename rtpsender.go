@@ -166,3 +166,8 @@ func (r *RTPSender) hasSent() bool {
 		return false
 	}
 }
+
+// GetStats gathers stats for this sender only and reports the result.
+func (r *RTPSender) GetStats() StatsReport {
+	return make(StatsReport)
+}

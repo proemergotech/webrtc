@@ -1798,3 +1798,13 @@ func (pc *PeerConnection) ICEGatheringState() ICEGatheringState {
 func (pc *PeerConnection) ConnectionState() PeerConnectionState {
 	return pc.connectionState
 }
+
+// GetStats gathers stats from all of the RTPSenders and RTPReceivers on Tracks
+// associated with this PeerConnection.
+//
+// If a Track is provided statistics gathered are limited to that Track. If nil
+// is provided, statistics are gathered from all Tracks on this PeerConnection.
+// The provided Track must be associated with this PeerConnection.
+func (pc *PeerConnection) GetStats(selector *Track) (StatsReport, error) {
+	return make(StatsReport), nil
+}

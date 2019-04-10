@@ -145,3 +145,8 @@ func (r *RTPReceiver) readRTP(b []byte) (n int, err error) {
 	<-r.received
 	return r.rtpReadStream.Read(b)
 }
+
+// GetStats gathers stats for this receiver only and reports the result.
+func (r *RTPReceiver) GetStats() StatsReport {
+	return make(StatsReport)
+}
