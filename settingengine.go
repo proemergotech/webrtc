@@ -3,6 +3,7 @@
 package webrtc
 
 import (
+	"net"
 	"time"
 
 	"github.com/pion/ice"
@@ -26,6 +27,7 @@ type SettingEngine struct {
 	}
 	candidates struct {
 		ICENetworkTypes []NetworkType
+		extraHostIPs    map[NetworkType][]net.IP
 	}
 	LoggerFactory logging.LoggerFactory
 }
@@ -61,4 +63,9 @@ func (e *SettingEngine) SetEphemeralUDPPortRange(portMin, portMax uint16) error 
 // during local and server reflexive gathering.
 func (e *SettingEngine) SetNetworkTypes(candidateTypes []NetworkType) {
 	e.candidates.ICENetworkTypes = candidateTypes
+}
+
+// SetExtraHostIPs lets you specify extra ips that should be considered for "host" type candidates.
+func (e *SettingEngine) SetExtraHostIPs(extraHostIPs map[NetworkType][]net.IP) {
+	e.candidates.extraHostIPs = extraHostIPs
 }

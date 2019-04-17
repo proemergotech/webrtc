@@ -4,6 +4,7 @@ package webrtc
 
 import (
 	"errors"
+	"net"
 	"sync"
 
 	"github.com/pion/ice"
@@ -74,6 +75,15 @@ func (g *ICEGatherer) Gather() error {
 
 	for _, typ := range requestedNetworkTypes {
 		config.NetworkTypes = append(config.NetworkTypes, ice.NetworkType(typ))
+	}
+
+	extraHostIPs := g.api.settingEngine.candidates.extraHostIPs
+	if extraHostIPs != nil {
+		config.ExtraHostIPs = make(map[ice.NetworkType][]net.IP, len(extraHostIPs))
+
+		for typ, ips := range extraHostIPs {
+			config.ExtraHostIPs[ice.NetworkType(typ)] = ips
+		}
 	}
 
 	agent, err := ice.NewAgent(config)
