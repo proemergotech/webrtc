@@ -27,10 +27,12 @@ type SettingEngine struct {
 	}
 	candidates struct {
 		ICENetworkTypes []NetworkType
-		extraHostIPs    map[NetworkType][]net.IP
+		localNatRule    NatRule
 	}
 	LoggerFactory logging.LoggerFactory
 }
+
+type NatRule func(network string, localIP net.IP, localPort int) (natIP net.IP, natPort int)
 
 // DetachDataChannels enables detaching data channels. When enabled
 // data channels have to be detached in the OnOpen callback using the
@@ -65,7 +67,8 @@ func (e *SettingEngine) SetNetworkTypes(candidateTypes []NetworkType) {
 	e.candidates.ICENetworkTypes = candidateTypes
 }
 
-// SetExtraHostIPs lets you specify extra ips that should be considered for "host" type candidates.
-func (e *SettingEngine) SetExtraHostIPs(extraHostIPs map[NetworkType][]net.IP) {
-	e.candidates.extraHostIPs = extraHostIPs
+// SetLocalNatRule lets you publish different ip/ports as local ip than the ones you listen to. Useful for lan NAT,
+// eg: when running the webrtc server inside a container, but joining to it using
+func (e *SettingEngine) SetLocalNatRule(rule NatRule) {
+	e.candidates.localNatRule = rule
 }

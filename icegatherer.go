@@ -66,6 +66,7 @@ func (g *ICEGatherer) Gather() error {
 		ConnectionTimeout: g.api.settingEngine.timeout.ICEConnection,
 		KeepaliveInterval: g.api.settingEngine.timeout.ICEKeepalive,
 		LoggerFactory:     g.api.settingEngine.LoggerFactory,
+		LocalNatRule:      ice.NatRule(g.api.settingEngine.candidates.localNatRule),
 	}
 
 	requestedNetworkTypes := g.api.settingEngine.candidates.ICENetworkTypes
@@ -75,15 +76,6 @@ func (g *ICEGatherer) Gather() error {
 
 	for _, typ := range requestedNetworkTypes {
 		config.NetworkTypes = append(config.NetworkTypes, ice.NetworkType(typ))
-	}
-
-	extraHostIPs := g.api.settingEngine.candidates.extraHostIPs
-	if extraHostIPs != nil {
-		config.ExtraHostIPs = make(map[ice.NetworkType][]net.IP, len(extraHostIPs))
-
-		for typ, ips := range extraHostIPs {
-			config.ExtraHostIPs[ice.NetworkType(typ)] = ips
-		}
 	}
 
 	agent, err := ice.NewAgent(config)

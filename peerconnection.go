@@ -1486,7 +1486,7 @@ func (pc *PeerConnection) CreateDataChannel(label string, options *DataChannelIn
 	pc.dataChannels[params.ID] = d
 
 	// Open if networking already started
-	if pc.sctpTransport != nil {
+	if pc.sctpTransport != nil && pc.sctpTransport.association != nil {
 		err = d.open(pc.sctpTransport)
 		if err != nil {
 			return nil, err
