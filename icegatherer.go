@@ -4,7 +4,6 @@ package webrtc
 
 import (
 	"errors"
-	"net"
 	"sync"
 
 	"github.com/pion/ice"

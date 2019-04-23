@@ -17,4 +17,4 @@ require (
 	github.com/stretchr/testify v1.3.0
 )
 
-replace github.com/pion/ice => github.com/proemergotech/ice v0.2.1-0.20190417145846-1d936dd36147
+replace github.com/pion/ice => github.com/proemergotech/ice v0.2.2-0.20190423090351-b00046431f86

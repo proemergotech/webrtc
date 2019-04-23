@@ -52,6 +52,8 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/proemergotech/ice v0.2.1-0.20190417145846-1d936dd36147 h1:8i6gJWi7nwNvFXiSHWAZ1A5O8oLqgy1jh4cyYBlSA5M=
 github.com/proemergotech/ice v0.2.1-0.20190417145846-1d936dd36147/go.mod h1:igvbO76UeYthbSu0UsUTqjyWpFT3diUmM+x2vt4p4fw=
+github.com/proemergotech/ice v0.2.2-0.20190423090351-b00046431f86 h1:yf05dMrhyC5V7Ap+ta/zD78gh7oPEooIwPG1eo9/8iE=
+github.com/proemergotech/ice v0.2.2-0.20190423090351-b00046431f86/go.mod h1:igvbO76UeYthbSu0UsUTqjyWpFT3diUmM+x2vt4p4fw=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.3.0 h1:TivCn/peBQ7UY8ooIcPgZFpTNSz0Q2U6UrFlUfqbe0Q=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
